@@ -20,9 +20,11 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.json({ data: "welcome" });
-});
+//import routes
+const blogPost = require("./routes/BlogPost");
+
+// apply route middleware
+app.use("/blogpost", blogPost);
 
 const PORT = process.env.PORT || 4000;
 
