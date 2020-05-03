@@ -1,10 +1,9 @@
 import React from "react";
-import Create from "../components/Create";
 
 const Home = () => {
   return (
     <div>
-      <Create />
+      <h1>Home</h1>
     </div>
   );
 };
