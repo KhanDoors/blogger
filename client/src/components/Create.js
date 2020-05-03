@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
-      width: 200,
+      width: "80vw",
     },
   },
 }));
@@ -55,39 +55,46 @@ const Create = () => {
             autoComplete="off"
             onSubmit={onSubmit}
           >
-            <div style={{ width: "20em" }}>
+            <div style={{ width: "60em" }}>
               <TextField
                 itemType="text"
                 placeholder="Title"
                 name="title"
                 required
+                fullWidth
                 value={title}
                 onChange={onChange}
               />
             </div>
-            <div style={{ width: "200em" }}>
+            <div style={{ height: "20em", width: "60em" }}>
               <TextField
                 itemType="text"
                 multiline
-                rows={4}
                 required
-                fullwidth="true"
+                fullWidth
+                rows={12}
                 placeholder="Content"
                 name="content"
                 value={content}
                 onChange={onChange}
               />
             </div>
-            <div style={{ width: "20em" }}>
+            <div style={{ width: "60em" }}>
               <TextField
                 itemType="text"
+                fullWidth
                 placeholder="Your Name"
                 name="user"
                 value={user}
                 onChange={onChange}
               />
             </div>
-            <Button variant="contained" color="primary" type="submit">
+            <Button
+              style={{ width: "20em" }}
+              variant="contained"
+              color="primary"
+              type="submit"
+            >
               Create
             </Button>
           </form>

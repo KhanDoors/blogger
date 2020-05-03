@@ -21,3 +21,12 @@ exports.create = (req, res) => {
     res.json(blogpost);
   });
 };
+
+exports.list = (req, res) => {
+  BlogPost.find({})
+    .limit(10)
+    .exec((err, blogposts) => {
+      if (err) console.log(err);
+      res.json(blogposts);
+    });
+};
