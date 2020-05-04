@@ -25,7 +25,7 @@ const Home = () => {
       <h1>Blog Posts</h1>
       {blogPosts.map((blog, i) => (
         <div key={blog._id}>
-          <Link to={`/blogpost/${blog.slug}`}>
+          <Link to={`/${blog.slug}`}>
             <h2>{blog.title}</h2>
           </Link>
           <p>{blog.content.substring(0, 100)}</p>

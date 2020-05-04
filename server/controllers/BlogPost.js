@@ -31,3 +31,12 @@ exports.list = (req, res) => {
       res.json(blogposts);
     });
 };
+
+exports.read = (req, res) => {
+  const { slug } = req.params;
+  BlogPost.findOne({ slug })
+  .exec((err, blogpost) => {
+    if (err) console.log(err);
+    res.json(blogpost);
+  });
+};
