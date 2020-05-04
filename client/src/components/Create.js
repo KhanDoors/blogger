@@ -10,8 +10,8 @@ import axios from "axios";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
-      margin: theme.spacing(1),
-      width: "80vw",
+      margin: "1em",
+      width: "40vw",
     },
   },
 }));
@@ -48,9 +48,10 @@ const Create = () => {
   return (
     <>
       <Card>
-        <CardActionArea style={{ margin: ".5em" }}>
+        <CardActionArea style={{ margin: "2em", textAlign: "center" }}>
           <form
             className={classes.root}
+            style={{ marginLeft: "9em" }}
             noValidate
             autoComplete="off"
             onSubmit={onSubmit}
@@ -89,14 +90,17 @@ const Create = () => {
                 onChange={onChange}
               />
             </div>
-            <Button
-              style={{ width: "20em" }}
-              variant="contained"
-              color="primary"
-              type="submit"
-            >
-              Create
-            </Button>
+            <br />
+            <div>
+              <Button
+                style={{ width: "20em" }}
+                variant="contained"
+                color="primary"
+                type="submit"
+              >
+                Create
+              </Button>
+            </div>
           </form>
         </CardActionArea>
       </Card>

@@ -25,6 +25,7 @@ exports.create = (req, res) => {
 exports.list = (req, res) => {
   BlogPost.find({})
     .limit(10)
+    .sort({ createdAt: -1 })
     .exec((err, blogposts) => {
       if (err) console.log(err);
       res.json(blogposts);
