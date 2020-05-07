@@ -66,7 +66,7 @@ const Create = () => {
 
         <CardMedia
           className={classes.media}
-          image="https://i.ytimg.com/vi/DvoSYxYa9Bs/maxresdefault.jpg"
+          image="https://www.desktopbackground.org/p/2014/12/14/871389_scanner-test-african-violets-ellis-hollow_1200x662_h.jpg"
           title="My Blog"
         />
       </Card>
