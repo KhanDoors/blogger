@@ -9,6 +9,8 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import TextField from "@material-ui/core/TextField";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardHeader from "@material-ui/core/CardHeader";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,6 +24,10 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: theme.spacing(1),
+  },
+  media: {
+    height: 0,
+    paddingTop: "25%", // 16:9
   },
 }));
 
@@ -74,9 +80,19 @@ const UpdateBlogPost = (props) => {
 
   return (
     <div className={classes.root}>
-      <Typography variant="h2" style={{ textAlign: "center" }}>
-        {title}
-      </Typography>
+      <Card>
+        <CardHeader
+          style={{ textAlign: "center" }}
+          title={title}
+          subheader={new Date().toLocaleString()}
+        />
+
+        <CardMedia
+          className={classes.media}
+          image="https://www.thespruce.com/thmb/iVCVYiIIVIKkNRsl3nqfWeFXTRY=/1500x1125/filters:fill(auto,1)/GettyImages-760155711-5c616c4e46e0fb00017dd347.jpg"
+          title="My Blog"
+        />
+      </Card>
 
       <div>
         <Card>
