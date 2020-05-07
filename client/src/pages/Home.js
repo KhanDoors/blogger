@@ -6,6 +6,8 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardHeader from "@material-ui/core/CardHeader";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: theme.spacing(1),
+  },
+  media: {
+    height: 0,
+    paddingTop: "25%", // 16:9
   },
 }));
 
@@ -43,9 +49,20 @@ const Home = () => {
 
   return (
     <div className={classes.root}>
-      <Typography variant="h2" style={{ textAlign: "center" }}>
-        Blog Posts
-      </Typography>
+      <Card>
+        <CardHeader
+          style={{ textAlign: "center" }}
+          title="Enjoy a Blog Post"
+          subheader={new Date().toLocaleString()}
+        />
+
+        <CardMedia
+          className={classes.media}
+          image="https://hgtvhome.sndimg.com/content/dam/images/hgtv/stock/2018/2/27/0/iStock-purple-geraniums-542945456.jpg.rend.hgtvcom.966.725.suffix/1519754224444.jpeg"
+          title="My Blog"
+        />
+      </Card>
+
       {blogPosts.map((blog, i) => (
         <div key={blog._id}>
           <Card>

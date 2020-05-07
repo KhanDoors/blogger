@@ -7,6 +7,8 @@ import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardHeader from "@material-ui/core/CardHeader";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,6 +22,10 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: theme.spacing(1),
+  },
+  media: {
+    height: 0,
+    paddingTop: "25%", // 16:9
   },
 }));
 
@@ -38,9 +44,19 @@ const BlogPost = (props) => {
 
   return (
     <div className={classes.root}>
-      <Typography variant="h2" style={{ textAlign: "center" }}>
-        {blogPost.title}
-      </Typography>
+      <Card>
+        <CardHeader
+          style={{ textAlign: "center" }}
+          title={blogPost.title}
+          subheader={new Date().toLocaleString()}
+        />
+
+        <CardMedia
+          className={classes.media}
+          image="https://www.bloomsbyheinau.com/assets/images/purple-flowers-header.jpg"
+          title="My Blog"
+        />
+      </Card>
 
       <div>
         <Card>

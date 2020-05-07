@@ -6,13 +6,23 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
+import Typography from "@material-ui/core/Typography";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardHeader from "@material-ui/core/CardHeader";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    display: "flex",
+    flexWrap: "wrap",
     "& > *": {
-      margin: "1em",
-      width: "40vw",
+      margin: "1rem",
+      width: "100vw",
+      backgroundColor: "violet",
     },
+  },
+  media: {
+    height: 0,
+    paddingTop: "25%", // 16:9
   },
 }));
 
@@ -46,17 +56,34 @@ const Create = () => {
   };
 
   return (
-    <>
+    <div className={classes.root}>
       <Card>
-        <CardActionArea style={{ margin: "2em", textAlign: "center" }}>
+        <CardHeader
+          style={{ textAlign: "center" }}
+          title="Write Something Amazing!"
+          subheader={new Date().toLocaleString()}
+        />
+
+        <CardMedia
+          className={classes.media}
+          image="https://i.ytimg.com/vi/DvoSYxYa9Bs/maxresdefault.jpg"
+          title="My Blog"
+        />
+      </Card>
+      <Card
+        style={{
+          margin: "3.5rem",
+          textAlign: "center",
+        }}
+      >
+        <CardActionArea>
           <form
-            className={classes.root}
-            style={{ marginLeft: "9em" }}
+            style={{ margin: "2em" }}
             noValidate
             autoComplete="off"
             onSubmit={onSubmit}
           >
-            <div style={{ width: "60em" }}>
+            <div style={{ width: "80rem" }}>
               <TextField
                 itemType="text"
                 placeholder="Title"
@@ -67,7 +94,7 @@ const Create = () => {
                 onChange={onChange}
               />
             </div>
-            <div style={{ height: "20em", width: "60em" }}>
+            <div style={{ height: "20em", width: "80rem" }}>
               <TextField
                 itemType="text"
                 multiline
@@ -80,7 +107,7 @@ const Create = () => {
                 onChange={onChange}
               />
             </div>
-            <div style={{ width: "60em" }}>
+            <div style={{ width: "80rem" }}>
               <TextField
                 itemType="text"
                 fullWidth
@@ -104,7 +131,7 @@ const Create = () => {
           </form>
         </CardActionArea>
       </Card>
-    </>
+    </div>
   );
 };
 
