@@ -5,7 +5,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 
 const useStyles = makeStyles((theme) => ({
@@ -63,16 +62,18 @@ const Home = () => {
                 Author: {blog.user}
               </Typography>
               <Typography variant="h6" gutterBottom>
-                Created At: {new Date(blog.createdAt).toLocaleString()}
+                Created: {new Date(blog.createdAt).toLocaleString()}
               </Typography>
+              <Link to={`/update/${blog.slug}`}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.button}
+                >
+                  Update
+                </Button>
+              </Link>
 
-              <Button
-                variant="contained"
-                color="primary"
-                className={classes.button}
-              >
-                Update
-              </Button>
               <Button
                 variant="contained"
                 color="secondary"

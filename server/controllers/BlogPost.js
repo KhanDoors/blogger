@@ -34,9 +34,29 @@ exports.list = (req, res) => {
 
 exports.read = (req, res) => {
   const { slug } = req.params;
-  BlogPost.findOne({ slug })
-  .exec((err, blogpost) => {
+  BlogPost.findOne({ slug }).exec((err, blogpost) => {
     if (err) console.log(err);
     res.json(blogpost);
+  });
+};
+
+exports.update = (req, res) => {
+  const { slug } = req.params;
+  const { title, content, user } = req.body;
+  BlogPost.findOneAndUpdate(
+    { slug },
+    { title, content, user },
+    { new: true }
+  ).exec((err, blogpost) => {
+    if (err) console.log(err);
+    res.json(blogpost);
+  });
+};
+
+exports.remove = (req, res) => {
+  const { slug } = req.params;
+  BlogPost.findOneAndRemove({ slug }).exec((err, blogpost) => {
+    if (err) console.log(err);
+    res.json({ message: "BlogPost Deleted" });
   });
 };

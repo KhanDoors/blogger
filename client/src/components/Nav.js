@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import Link from "@material-ui/core/Link";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,11 +30,11 @@ export default function Nav() {
           <Typography variant="h6" className={classes.title}>
             Blog
           </Typography>
-          <Link style={{ color: "orange", margin: "1em" }} href="/">
+          <Link style={{ color: "orange", margin: "1em" }} to="/">
             Home
           </Link>
 
-          <Link style={{ color: "yellow", margin: "1em" }} href="/create">
+          <Link style={{ color: "yellow", margin: "1em" }} to="/create">
             Create
           </Link>
           <Button color="inherit">Login</Button>
