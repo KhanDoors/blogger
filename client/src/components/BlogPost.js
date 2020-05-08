@@ -70,22 +70,6 @@ const BlogPost = (props) => {
             <Typography variant="h4" gutterBottom>
               {blogPost.content}
             </Typography>
-
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-            >
-              Update
-            </Button>
-
-            <Button
-              variant="contained"
-              color="secondary"
-              className={classes.button}
-            >
-              Delete
-            </Button>
           </CardContent>
         </Card>
       </div>
