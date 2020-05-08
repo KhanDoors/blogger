@@ -47,6 +47,26 @@ const Home = () => {
     getPosts();
   }, []);
 
+  const deleteConfirm = (slug) => {
+    let answer = window.confirm(
+      "Are you sure you want to delete this Blog post"
+    );
+    if (answer) {
+      deletePost(slug);
+    }
+  };
+
+  const deletePost = (slug) => {
+    console.log("delete", slug);
+    axios
+      .delete(`${process.env.REACT_APP_URL}/blogpost/${slug}`)
+      .then((res) => {
+        alert(res.data.message);
+        getPosts();
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className={classes.root}>
       <Card>
@@ -95,6 +115,7 @@ const Home = () => {
                 variant="contained"
                 color="secondary"
                 className={classes.button}
+                onClick={() => deleteConfirm(blog.slug)}
               >
                 Delete
               </Button>
