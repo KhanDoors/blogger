@@ -37,7 +37,10 @@ export default function Nav() {
           <Link style={{ color: "yellow", margin: "1em" }} to="/create">
             Create
           </Link>
-          <Button color="inherit">Login</Button>
+
+          <Link style={{ color: "yellow", margin: "1em" }} to="/login">
+            Login
+          </Link>
         </Toolbar>
       </AppBar>
     </div>

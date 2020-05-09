@@ -10,6 +10,7 @@ import Create from "./components/Create";
 import Nav from "./components/Nav";
 import BlogPost from "./components/BlogPost";
 import UpdateBlogPost from "./components/UpdateBlogPost";
+import Login from "./components/Login";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Nav />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/login" component={Login} />
         <Route exact path="/create" component={Create} />
         <Route exact path="/:slug" component={BlogPost} />
         <Route exact path="/update/:slug" component={UpdateBlogPost} />
