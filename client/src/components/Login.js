@@ -6,12 +6,12 @@ import TextField from "@material-ui/core/TextField";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Button from "@material-ui/core/Button";
-
 import Typography from "@material-ui/core/Typography";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardHeader from "@material-ui/core/CardHeader";
 import Avatar from "@material-ui/core/Avatar";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import { authenticate, getUser } from "./Utils";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Login = () => {
+const Login = (props) => {
   const classes = useStyles();
   const [state, setState] = useState({
     name: "",
@@ -43,6 +43,10 @@ const Login = () => {
   });
 
   const { name, password } = state;
+
+  useEffect(() => {
+    getUser() && props.history.push("/");
+  }, []);
 
   const onChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -54,7 +58,7 @@ const Login = () => {
     await axios
       .post(`${process.env.REACT_APP_URL}/login`, { name, password })
       .then((res) => {
-        console.log(res);
+        authenticate(res, () => props.history.push("/"));
       })
       .catch((err) => {
         console.log(err.response);

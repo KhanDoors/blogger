@@ -6,7 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import { getUser, logout } from "./Utils";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Nav() {
+const Nav = (props) => {
   const classes = useStyles();
 
   return (
@@ -38,11 +39,22 @@ export default function Nav() {
             Create
           </Link>
 
-          <Link style={{ color: "yellow", margin: "1em" }} to="/login">
-            Login
-          </Link>
+          {!getUser() ? (
+            <Link style={{ color: "yellow", margin: "1em" }} to="/login">
+              Login
+            </Link>
+          ) : (
+            <Button
+              style={{ color: "yellow", margin: "1em" }}
+              onClick={() => logout(() => props.history.push("/"))}
+            >
+              Logout
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </div>
   );
-}
+};
+
+export default withRouter(Nav);
