@@ -22,9 +22,11 @@ app.use(express.json());
 
 //import routes
 const blogPost = require("./routes/BlogPost");
+const auth = require("./routes/Auth");
 
 // apply route middleware
 app.use("/blogpost", blogPost);
+app.use("/login", auth);
 
 const PORT = process.env.PORT || 4000;
 

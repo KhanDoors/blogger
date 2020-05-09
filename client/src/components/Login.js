@@ -47,21 +47,19 @@ const Login = () => {
   const onChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
-  console.log(name, password);
 
   const onSubmit = async (e) => {
     e.preventDefault();
     console.table({ name, password });
-    //   await axios
-    //     .post(`${process.env.REACT_APP_URL}/blogpost`, { title, content, user })
-    //     .then((res) => {
-    //       console.log(res);
-    //       setState({ title: "", content: "", user: "" });
-    //     })
-    //     .catch((err) => {
-    //       console.log(err.response);
-    //       setState({ title: "", content: "", user: "" });
-    //     });
+    await axios
+      .post(`${process.env.REACT_APP_URL}/login`, { name, password })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err.response);
+        setState({ name: "", password: "" });
+      });
   };
 
   return (
