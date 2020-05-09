@@ -9,6 +9,8 @@ import axios from "axios";
 import Typography from "@material-ui/core/Typography";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardHeader from "@material-ui/core/CardHeader";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,14 +32,19 @@ const Create = () => {
   const classes = useStyles();
   const [state, setState] = useState({
     title: "",
-    content: "",
     user: "",
   });
 
-  const { title, content, user } = state;
+  const [content, setContent] = useState("");
+
+  const { title, user } = state;
 
   const onChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
+  };
+
+  const handleContent = (e) => {
+    setContent(e);
   };
 
   const onSubmit = async (e) => {
@@ -76,14 +83,14 @@ const Create = () => {
           textAlign: "center",
         }}
       >
-        <CardActionArea>
+        <CardActionArea style={{ backgroundColor: "#C587CC" }}>
           <form
             style={{ margin: "2em" }}
             noValidate
             autoComplete="off"
             onSubmit={onSubmit}
           >
-            <div style={{ width: "80rem" }}>
+            <div style={{ width: "72.5rem" }}>
               <TextField
                 itemType="text"
                 placeholder="Title"
@@ -95,19 +102,16 @@ const Create = () => {
               />
             </div>
             <div style={{ height: "20em", width: "80rem" }}>
-              <TextField
-                itemType="text"
-                multiline
-                required
-                fullWidth
-                rows={12}
-                placeholder="Content"
-                name="content"
+              <ReactQuill
+                theme="snow"
                 value={content}
-                onChange={onChange}
+                placeholder="Create whatever you want to ..."
+                required
+                onChange={handleContent}
+                style={{ height: "12rem", width: "85vw" }}
               />
             </div>
-            <div style={{ width: "80rem" }}>
+            <div style={{ width: "72.5rem" }}>
               <TextField
                 itemType="text"
                 fullWidth

@@ -11,6 +11,7 @@ import Nav from "./components/Nav";
 import BlogPost from "./components/BlogPost";
 import UpdateBlogPost from "./components/UpdateBlogPost";
 import Login from "./components/Login";
+import PrivateRoute from "./components/PrivateRoute";
 
 const App = () => {
   return (
@@ -19,9 +20,9 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/create" component={Create} />
+        <PrivateRoute exact path="/create" component={Create} />
         <Route exact path="/:slug" component={BlogPost} />
-        <Route exact path="/update/:slug" component={UpdateBlogPost} />
+        <PrivateRoute exact path="/update/:slug" component={UpdateBlogPost} />
         <Redirect to="/" />
       </Switch>
     </Router>

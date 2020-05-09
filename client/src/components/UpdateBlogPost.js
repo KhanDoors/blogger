@@ -96,9 +96,15 @@ const UpdateBlogPost = (props) => {
 
       <div>
         <Card>
-          <CardActionArea style={{ margin: "2em", textAlign: "center" }}>
+          <CardActionArea
+            style={{
+              margin: "2em",
+              backgroundColor: "#C587CC",
+              width: "80rem",
+            }}
+          >
             <form
-              style={{ marginLeft: "9em" }}
+              style={{ marginLeft: "4rem" }}
               noValidate
               autoComplete="off"
               onSubmit={onSubmit}
