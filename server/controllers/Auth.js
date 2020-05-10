@@ -14,3 +14,7 @@ exports.login = (req, res) => {
     });
   }
 };
+
+exports.requireSignIn = expressJwt({
+  secret: process.env.JWT_SECRET,
+});
