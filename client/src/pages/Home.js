@@ -8,6 +8,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardHeader from "@material-ui/core/CardHeader";
+import renderHTML from "react-render-html";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -93,7 +94,7 @@ const Home = () => {
                 </Typography>
               </Link>
               <Typography variant="h4" gutterBottom>
-                {blog.content.substring(0, 100)}
+                {renderHTML(blog.content.substring(0, 100))}
               </Typography>
               <Typography variant="h5" gutterBottom>
                 Author: {blog.user}

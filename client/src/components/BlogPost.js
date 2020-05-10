@@ -9,6 +9,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardHeader from "@material-ui/core/CardHeader";
+import renderHTML from "react-render-html";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,7 +69,7 @@ const BlogPost = (props) => {
               Created: {new Date(blogPost.createdAt).toLocaleString()}
             </Typography>
             <Typography variant="h4" gutterBottom>
-              {blogPost.content}
+              {renderHTML(blogPost && blogPost.content)}
             </Typography>
           </CardContent>
         </Card>

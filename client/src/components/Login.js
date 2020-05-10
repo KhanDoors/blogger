@@ -54,7 +54,6 @@ const Login = (props) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.table({ name, password });
     await axios
       .post(`${process.env.REACT_APP_URL}/login`, { name, password })
       .then((res) => {

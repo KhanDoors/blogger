@@ -11,6 +11,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardHeader from "@material-ui/core/CardHeader";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { getUser } from "./Utils";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,7 +33,7 @@ const Create = () => {
   const classes = useStyles();
   const [state, setState] = useState({
     title: "",
-    user: "",
+    user: getUser(),
   });
 
   const [content, setContent] = useState("");
@@ -49,12 +50,13 @@ const Create = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    // console.table({ title, content, user });
+
     await axios
       .post(`${process.env.REACT_APP_URL}/blogpost`, { title, content, user })
       .then((res) => {
         console.log(res);
-        setState({ title: "", content: "", user: "" });
+        setState({ title: "", user: "" });
+        setContent("");
       })
       .catch((err) => {
         console.log(err.response);
