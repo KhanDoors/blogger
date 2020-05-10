@@ -103,25 +103,28 @@ const Home = () => {
               <Typography variant="h6" gutterBottom>
                 Created: {new Date(blog.createdAt).toLocaleString()}
               </Typography>
+              {getUser() && (
+                <div>
+                  <Link to={`/update/${blog.slug}`}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      className={classes.button}
+                    >
+                      Update
+                    </Button>
+                  </Link>
 
-              <Link to={`/update/${blog.slug}`}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.button}
-                >
-                  Update
-                </Button>
-              </Link>
-
-              <Button
-                variant="contained"
-                color="secondary"
-                className={classes.button}
-                onClick={() => deleteConfirm(blog.slug)}
-              >
-                Delete
-              </Button>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    className={classes.button}
+                    onClick={() => deleteConfirm(blog.slug)}
+                  >
+                    Delete
+                  </Button>
+                </div>
+              )}
             </CardContent>
           </Card>
         </div>
