@@ -11,6 +11,8 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import TextField from "@material-ui/core/TextField";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardHeader from "@material-ui/core/CardHeader";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,19 +37,25 @@ const UpdateBlogPost = (props) => {
   const classes = useStyles();
   const [state, setState] = useState({
     title: "",
-    content: "",
     slug: "",
     user: "",
   });
 
-  const { title, slug, user, content } = state;
+  const [content, setContent] = useState("");
+
+  const { title, slug, user } = state;
+
+  const handleContent = (e) => {
+    setContent(e);
+  };
 
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_URL}/blogpost/${props.match.params.slug}`)
       .then((res) => {
-        const { title, content, slug, user } = res.data;
-        setState({ ...state, title, content, slug, user });
+        const { title, slug, user, content } = res.data;
+        setState({ ...state, title, slug, user });
+        setContent(content);
       })
       .catch((err) => {
         console.log(err.response);
@@ -70,7 +78,8 @@ const UpdateBlogPost = (props) => {
       .then((res) => {
         console.log(res);
         const { title, content, slug, user } = res.data;
-        setState({ ...state, title, content, slug, user });
+        setState({ ...state, title, slug, user });
+        setContent(content);
         alert(`Blog Post ${title} is Updated`);
       })
       .catch((err) => {
@@ -120,19 +129,16 @@ const UpdateBlogPost = (props) => {
                   onChange={onChange}
                 />
               </div>
-              <div style={{ height: "20em", width: "60em" }}>
-                <TextField
-                  itemType="text"
-                  multiline
-                  required
-                  fullWidth
-                  rows={12}
-                  placeholder="Content"
-                  name="content"
+              <div style={{ height: "20em", width: "80rem" }}>
+                <ReactQuill
+                  theme="snow"
                   value={content}
-                  onChange={onChange}
+                  onChange={handleContent}
+                  name="content"
+                  style={{ height: "12rem", width: "85vw" }}
                 />
               </div>
+
               <div style={{ width: "60em" }}>
                 <TextField
                   itemType="text"

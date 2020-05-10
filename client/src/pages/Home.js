@@ -9,6 +9,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardHeader from "@material-ui/core/CardHeader";
 import renderHTML from "react-render-html";
+import { getUser } from "../components/Utils";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -102,6 +103,7 @@ const Home = () => {
               <Typography variant="h6" gutterBottom>
                 Created: {new Date(blog.createdAt).toLocaleString()}
               </Typography>
+
               <Link to={`/update/${blog.slug}`}>
                 <Button
                   variant="contained"
