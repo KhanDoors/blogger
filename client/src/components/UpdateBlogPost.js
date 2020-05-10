@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
       margin: "1rem",
       width: "100vw",
       backgroundColor: "violet",
+      textAlign: "center",
     },
   },
   button: {
@@ -104,70 +105,59 @@ const UpdateBlogPost = (props) => {
         />
       </Card>
 
-      <div>
-        <Card>
-          <CardActionArea
-            style={{
-              margin: "2em",
-              backgroundColor: "#F6A8FF",
-              width: "80rem",
-            }}
+      <Card>
+        <CardContent style={{ backgroundColor: "#F6A8FF" }}>
+          <form
+            style={{ margin: "2em" }}
+            noValidate
+            autoComplete="off"
+            onSubmit={onSubmit}
           >
-            <form
-              style={{ marginLeft: "4rem" }}
-              noValidate
-              autoComplete="off"
-              onSubmit={onSubmit}
-            >
-              <div style={{ width: "60em" }}>
-                <TextField
-                  itemType="text"
-                  placeholder="Title"
-                  name="title"
-                  required
-                  fullWidth
-                  value={title}
-                  onChange={onChange}
-                />
-              </div>
-              <Container
-                maxWidth="sm"
-                // style={{ height: "20em", width: "60vw" }}
+            <div style={{ width: "72.5rem" }}>
+              <TextField
+                itemType="text"
+                placeholder="Title"
+                name="title"
+                required
+                fullWidth
+                value={title}
+                onChange={onChange}
+              />
+            </div>
+            <br />
+            <div style={{ height: "20em", width: "80rem" }}>
+              <ReactQuill
+                theme="snow"
+                value={content}
+                onChange={handleContent}
+                name="content"
+                style={{ height: "17em", width: "85vw" }}
+              />
+            </div>
+            <div style={{ width: "72.5rem" }}>
+              <TextField
+                itemType="text"
+                fullWidth
+                placeholder="Your Name"
+                name="user"
+                value={user}
+                onChange={onChange}
+              />
+            </div>
+            <br />
+            <div>
+              <Button
+                style={{ width: "20em" }}
+                variant="contained"
+                color="primary"
+                type="submit"
               >
-                <ReactQuill
-                  theme="snow"
-                  value={content}
-                  onChange={handleContent}
-                  name="content"
-                  style={{ height: "12rem", width: "80rem" }}
-                />
-              </Container>
-
-              <div style={{ width: "60em" }}>
-                <TextField
-                  itemType="text"
-                  fullWidth
-                  placeholder="Your Name"
-                  name="user"
-                  value={user}
-                  onChange={onChange}
-                />
-              </div>
-              <br />
-              <div>
-                <Button
-                  style={{ width: "20em" }}
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                >
-                  Update
-                </Button>
-              </div>
-            </form>
-          </CardActionArea>
-        </Card>
-      </div>
+                Update
+              </Button>
+            </div>
+          </form>
+        </CardContent>
+      </Card>
     </div>
   );
 };

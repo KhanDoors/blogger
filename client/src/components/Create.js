@@ -12,6 +12,8 @@ import CardHeader from "@material-ui/core/CardHeader";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { getUser } from "./Utils";
+import CardContent from "@material-ui/core/CardContent";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
       margin: "1rem",
       width: "100vw",
       backgroundColor: "violet",
+      textAlign: "center",
     },
   },
   media: {
@@ -79,13 +82,8 @@ const Create = () => {
           title="My Blog"
         />
       </Card>
-      <Card
-        style={{
-          margin: "3.5rem",
-          textAlign: "center",
-        }}
-      >
-        <CardActionArea style={{ backgroundColor: "#C587CC" }}>
+      <Card>
+        <CardContent style={{ backgroundColor: "#F6A8FF" }}>
           <form
             style={{ margin: "2em" }}
             noValidate
@@ -103,6 +101,7 @@ const Create = () => {
                 onChange={onChange}
               />
             </div>
+            <br />
             <div style={{ height: "20em", width: "80rem" }}>
               <ReactQuill
                 theme="snow"
@@ -110,7 +109,7 @@ const Create = () => {
                 placeholder="Create whatever you want to ..."
                 required
                 onChange={handleContent}
-                style={{ height: "12rem", width: "85vw" }}
+                style={{ height: "17em", width: "85vw" }}
               />
             </div>
             <div style={{ width: "72.5rem" }}>
@@ -135,7 +134,7 @@ const Create = () => {
               </Button>
             </div>
           </form>
-        </CardActionArea>
+        </CardContent>
       </Card>
     </div>
   );
