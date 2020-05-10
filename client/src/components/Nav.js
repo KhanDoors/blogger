@@ -31,11 +31,17 @@ const Nav = (props) => {
           <Typography variant="h6" className={classes.title}>
             Blog
           </Typography>
-          <Link style={{ color: "orange", margin: "1em" }} to="/">
+          <Link
+            style={{ color: "orange", margin: "1em", textDecoration: "none" }}
+            to="/"
+          >
             Home
           </Link>
 
-          <Link style={{ color: "yellow", margin: "1em" }} to="/create">
+          <Link
+            style={{ color: "yellow", margin: "1em", textDecoration: "none" }}
+            to="/create"
+          >
             Create
           </Link>
 

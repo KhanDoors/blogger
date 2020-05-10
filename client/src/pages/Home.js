@@ -89,42 +89,52 @@ const Home = () => {
         <div key={blog._id}>
           <Card>
             <CardContent>
-              <Link to={`/${blog.slug}`}>
-                <Typography variant="h2" color="primary" gutterBottom>
-                  Title: {blog.title}
+              <Link style={{ textDecoration: "none" }} to={`/${blog.slug}`}>
+                <Typography
+                  align="center"
+                  variant="h2"
+                  color="primary"
+                  gutterBottom
+                >
+                  {blog.title}
                 </Typography>
               </Link>
               <Typography variant="h4" gutterBottom>
-                {renderHTML(blog.content.substring(0, 100))}
+                {renderHTML(blog.content.substring(0, 75))}
               </Typography>
-              <Typography variant="h5" gutterBottom>
-                Author: {blog.user}
-              </Typography>
-              <Typography variant="h6" gutterBottom>
-                Created: {new Date(blog.createdAt).toLocaleString()}
-              </Typography>
-              {getUser() && (
-                <div>
-                  <Link to={`/update/${blog.slug}`}>
+              <div style={{ textAlign: "center" }}>
+                <Typography variant="h5" gutterBottom>
+                  Author: {blog.user}
+                </Typography>
+                <Typography variant="h6" gutterBottom>
+                  Created: {new Date(blog.createdAt).toLocaleString()}
+                </Typography>
+                {getUser() && (
+                  <div>
+                    <Link
+                      style={{ textDecoration: "none" }}
+                      to={`/update/${blog.slug}`}
+                    >
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        className={classes.button}
+                      >
+                        Update
+                      </Button>
+                    </Link>
+
                     <Button
                       variant="contained"
-                      color="primary"
+                      color="secondary"
                       className={classes.button}
+                      onClick={() => deleteConfirm(blog.slug)}
                     >
-                      Update
+                      Delete
                     </Button>
-                  </Link>
-
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    className={classes.button}
-                    onClick={() => deleteConfirm(blog.slug)}
-                  >
-                    Delete
-                  </Button>
-                </div>
-              )}
+                  </div>
+                )}
+              </div>
             </CardContent>
           </Card>
         </div>

@@ -13,6 +13,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardHeader from "@material-ui/core/CardHeader";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -108,7 +109,7 @@ const UpdateBlogPost = (props) => {
           <CardActionArea
             style={{
               margin: "2em",
-              backgroundColor: "#C587CC",
+              backgroundColor: "#F6A8FF",
               width: "80rem",
             }}
           >
@@ -129,15 +130,18 @@ const UpdateBlogPost = (props) => {
                   onChange={onChange}
                 />
               </div>
-              <div style={{ height: "20em", width: "80rem" }}>
+              <Container
+                maxWidth="sm"
+                // style={{ height: "20em", width: "60vw" }}
+              >
                 <ReactQuill
                   theme="snow"
                   value={content}
                   onChange={handleContent}
                   name="content"
-                  style={{ height: "12rem", width: "85vw" }}
+                  style={{ height: "12rem", width: "80rem" }}
                 />
-              </div>
+              </Container>
 
               <div style={{ width: "60em" }}>
                 <TextField
