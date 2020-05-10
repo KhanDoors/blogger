@@ -9,7 +9,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardHeader from "@material-ui/core/CardHeader";
 import renderHTML from "react-render-html";
-import { getUser } from "../components/Utils";
+import { getUser, getToken } from "../components/Utils";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,7 +61,11 @@ const Home = () => {
   const deletePost = (slug) => {
     console.log("delete", slug);
     axios
-      .delete(`${process.env.REACT_APP_URL}/blogpost/${slug}`)
+      .delete(`${process.env.REACT_APP_URL}/blogpost/${slug}`, {
+        headers: {
+          authorization: `Bearer ${getToken()}`,
+        },
+      })
       .then((res) => {
         alert(res.data.message);
         getPosts();

@@ -11,7 +11,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardHeader from "@material-ui/core/CardHeader";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { getUser } from "./Utils";
+import { getUser, getToken } from "./Utils";
 import CardContent from "@material-ui/core/CardContent";
 import Box from "@material-ui/core/Box";
 
@@ -55,7 +55,15 @@ const Create = () => {
     e.preventDefault();
 
     await axios
-      .post(`${process.env.REACT_APP_URL}/blogpost`, { title, content, user })
+      .post(
+        `${process.env.REACT_APP_URL}/blogpost`,
+        { title, content, user },
+        {
+          headers: {
+            authorization: `Bearer ${getToken()}`,
+          },
+        }
+      )
       .then((res) => {
         console.log(res);
         setState({ title: "", user: "" });

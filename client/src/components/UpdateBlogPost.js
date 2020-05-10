@@ -14,6 +14,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Container from "@material-ui/core/Container";
+import { getToken } from "./Utils";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -72,11 +73,19 @@ const UpdateBlogPost = (props) => {
     e.preventDefault();
 
     await axios
-      .put(`${process.env.REACT_APP_URL}/blogpost/${slug}`, {
-        title,
-        content,
-        user,
-      })
+      .put(
+        `${process.env.REACT_APP_URL}/blogpost/${slug}`,
+        {
+          title,
+          content,
+          user,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${getToken()}`,
+          },
+        }
+      )
       .then((res) => {
         console.log(res);
         const { title, content, slug, user } = res.data;

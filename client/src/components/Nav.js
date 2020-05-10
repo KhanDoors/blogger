@@ -12,12 +12,16 @@ import { getUser, logout } from "./Utils";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    fontFamily: "Montserrat",
   },
   menuButton: {
     marginRight: theme.spacing(2),
   },
   title: {
     flexGrow: 1,
+    fontFamily: "Rouge Script",
+    fontWeight: 400,
+    fontSize: "2rem",
   },
 }));
 
@@ -28,30 +32,41 @@ const Nav = (props) => {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+          <Typography
+            style={{ color: "#F6A8FF" }}
+            variant="h6"
+            className={classes.title}
+          >
             Blog
           </Typography>
           <Link
-            style={{ color: "orange", margin: "1em", textDecoration: "none" }}
+            style={{ color: "#F6A8FF", margin: "1em", textDecoration: "none" }}
             to="/"
           >
             Home
           </Link>
 
           <Link
-            style={{ color: "yellow", margin: "1em", textDecoration: "none" }}
+            style={{ color: "#F6A8FF", margin: "1em", textDecoration: "none" }}
             to="/create"
           >
             Create
           </Link>
 
           {!getUser() ? (
-            <Link style={{ color: "yellow", margin: "1em" }} to="/login">
+            <Link
+              style={{
+                color: "#F6A8FF",
+                margin: "1em",
+                textDecoration: "none",
+              }}
+              to="/login"
+            >
               Login
             </Link>
           ) : (
             <Button
-              style={{ color: "yellow", margin: "1em" }}
+              style={{ color: "#F6A8FF", margin: "1em" }}
               onClick={() => logout(() => props.history.push("/"))}
             >
               Logout
