@@ -37,7 +37,7 @@ const Nav = (props) => {
             variant="h6"
             className={classes.title}
           >
-            Blog
+            Yasmine's Blog
           </Typography>
           <Link
             style={{ color: "#F6A8FF", margin: "1em", textDecoration: "none" }}
