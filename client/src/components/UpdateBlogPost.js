@@ -15,6 +15,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Container from "@material-ui/core/Container";
 import { getToken } from "./Utils";
+import CKEditor from "react-ckeditor-component";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,7 +50,8 @@ const UpdateBlogPost = (props) => {
   const { title, slug, user } = state;
 
   const handleContent = (e) => {
-    setContent(e);
+    const newContent = e.editor.getData();
+    setContent(newContent);
   };
 
   useEffect(() => {
@@ -134,15 +136,16 @@ const UpdateBlogPost = (props) => {
               />
             </div>
             <br />
-            <div style={{ height: "20em", width: "80rem" }}>
-              <ReactQuill
-                theme="snow"
-                value={content}
-                onChange={handleContent}
+            <div>
+              <CKEditor
                 name="content"
-                style={{ height: "17em", width: "85vw" }}
+                content={content}
+                events={{
+                  change: handleContent,
+                }}
               />
             </div>
+
             <div style={{ width: "72.5rem" }}>
               <TextField
                 itemType="text"

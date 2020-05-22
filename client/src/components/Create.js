@@ -14,6 +14,7 @@ import "react-quill/dist/quill.snow.css";
 import { getUser, getToken } from "./Utils";
 import CardContent from "@material-ui/core/CardContent";
 import Box from "@material-ui/core/Box";
+import CKEditor from "react-ckeditor-component";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,7 +49,8 @@ const Create = () => {
   };
 
   const handleContent = (e) => {
-    setContent(e);
+    const newContent = e.editor.getData();
+    setContent(newContent);
   };
 
   const onSubmit = async (e) => {
@@ -110,16 +112,16 @@ const Create = () => {
               />
             </div>
             <br />
-            <div style={{ height: "20em", width: "80rem" }}>
-              <ReactQuill
-                theme="snow"
-                value={content}
-                placeholder="Create whatever you want to ..."
-                required
-                onChange={handleContent}
-                style={{ height: "17em", width: "85vw" }}
+            <div>
+              <CKEditor
+                name="content"
+                content={content}
+                events={{
+                  change: handleContent,
+                }}
               />
             </div>
+
             <div style={{ width: "72.5rem" }}>
               <TextField
                 itemType="text"
